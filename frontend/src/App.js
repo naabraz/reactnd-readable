@@ -1,21 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+
+import Post from './components/post/Post'
+import * as api from './utils/api'
 
 class App extends Component {
+
+  state = {
+    posts: []
+  }
+
+  componentDidMount () {
+    api.getPosts().then((posts) => {
+      this.setState({ posts })
+    })
+  }
+
   render() {
+    
+    const { posts } = this.state
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      posts.map((post) => {
+        return <Post key={post.id} title={post.title} />
+      })
+    )
   }
 }
 
-export default App;
+export default App
