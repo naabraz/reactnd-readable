@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import PostList from './components/post-list/PostList'
-import Category from './components/category/Category'
+import CategoryList from './components/category-list/CategoryList'
 
 import * as api from './utils/api'
 
@@ -40,7 +40,7 @@ class App extends Component {
         <a onClick={() => this.orderBy('timestamp')} href="#Date">Date</a> | <a onClick={() => this.orderBy('voteScore')} href="#Order">Score</a>
 
         <PostList posts={posts} />
-        <Category categories={categories}/>
+        <CategoryList categories={categories}/>
       </div>
     )
   }

@@ -1,21 +1,12 @@
 import React from 'react'
 
-import './Category.css'
+const Category = ({ category }) => {
+  const { name, path } = category
 
-const Category = ({ categories }) => {
   return (
-    <div className="category">
-      <h1>Categories</h1>
-      <ul>
-        {categories.map((category) => {
-          return (
-            <li key={category.name}>
-              <a href={category.path}>{category.name}</a>
-            </li>
-          )
-        })}
-      </ul>
-    </div>
+    <li>
+      <a href={path}>{name}</a>
+    </li>
   )
 }
 
