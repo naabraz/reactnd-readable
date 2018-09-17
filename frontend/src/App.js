@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 
 import Post from './components/post/Post'
+
 import * as api from './utils/api'
+
+import './App.css'
 
 class App extends Component {
 
@@ -16,13 +19,13 @@ class App extends Component {
   }
 
   render() {
-    
     const { posts } = this.state
 
     return (
-      posts.map((post) => {
-        return <Post key={post.id} title={post.title} />
-      })
+      <div className="wrapper">
+        <a href="#Order">Order by</a>
+        { posts.map((post) => <Post key={post.id} post={post} />) }
+      </div>
     )
   }
 }
