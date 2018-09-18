@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import PostList from './components/post-list/PostList'
 import CategoryList from './components/category-list/CategoryList'
+import { posts } from './components/post/actions'
 
 import * as api from './utils/api'
 
@@ -25,6 +27,7 @@ class App extends Component {
   componentDidMount () {
     api.getPosts().then((posts) => {
       this.setState({ posts })
+      this.posts = this.props.posts(posts).posts
     })
 
     api.getCategories().then(({ categories }) => {
@@ -46,4 +49,17 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = () => {
+
+  return {
+    posts
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    posts: (data) => dispatch(posts(data))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

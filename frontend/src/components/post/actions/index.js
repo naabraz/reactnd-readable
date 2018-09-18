@@ -1,8 +1,8 @@
-export const UPDATE_POST_SCORE = 'UPDATE_POST_SCORE'
+export const SET_POSTS = 'SET_POSTS'
 
-export const updateScore = (voteScore) => {
+export const posts = (posts) => {
   return {
-    type: UPDATE_POST_SCORE,
-    voteScore
+    type: SET_POSTS,
+    posts
   }
 }

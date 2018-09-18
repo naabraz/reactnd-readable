@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import Rating from 'react-rating'
-import { connect } from 'react-redux'
 import moment from 'moment'
-
-import { updateScore } from './actions'
 
 import './Post.css'
 
@@ -32,26 +29,11 @@ class Post extends Component {
           <Rating
             initialRating={voteScore}
             emptySymbol="far fa-star"
-            fullSymbol="fas fa-star"
-            onChange={(value) => updateScore(value)} />
+            fullSymbol="fas fa-star" />
         </span>
       </div>
     )
   }
 }
 
-
-const mapStateToProps = (state) => {
-
-  return {
-      updatePostScore: state.posts
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateScore: (data) => dispatch(updateScore(data)),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Post);
+export default Post

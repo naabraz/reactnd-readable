@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import updatePostScore from '../components/post/reducers'
+import { posts } from '../components/post/reducers'
 
 const rootReducer = combineReducers({
-  updatePostScore
+  posts,
 })
 
 export default rootReducer
