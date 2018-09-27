@@ -1,7 +1,4 @@
-const headers = {
-  'Accept': 'application/json',
-  'Authorization': 123456
-}
+import headers from './headers'
 
 const fetchPosts = () =>
   fetch('http://localhost:3010/posts', {
@@ -9,5 +6,6 @@ const fetchPosts = () =>
   })
   .then(res => res.json())
   .then(data => data)
+
 
 export default fetchPosts
