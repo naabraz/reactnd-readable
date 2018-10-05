@@ -17,6 +17,7 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           <div>
+            <h1>Readable</h1>
             {this.props.loading === true
               ? null
               : <div>
