@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 
 import { handleInitialData } from '../actions/shared'
-import PostList from './PostList'
+import Home from './Home'
 
 class App extends Component {
   componentDidMount () {
@@ -21,7 +21,7 @@ class App extends Component {
             {this.props.loading === true
               ? null
               : <div>
-                  <Route path='/' exact component={PostList} />
+                  <Route path='/' exact component={Home} />
                 </div>
             }
           </div>

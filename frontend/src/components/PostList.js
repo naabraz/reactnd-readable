@@ -7,11 +7,14 @@ class PostList extends Component {
 
   render() {
     return (
-      <ul>
-        {this.props.posts.map((post) => (
-          <Post post={post} key={post.id}/>
-        ))}
-      </ul>
+      <div>
+        <ul>
+          {this.props.posts.map((post) => (
+            <Post post={post} key={post.id} />
+          ))}
+        </ul>
+      </div>
+
     )
   }
 }
