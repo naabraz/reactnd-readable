@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-class Post extends React.Component {
+class Post extends Component {
 
   // orderBy = (field) => {
   //   this.setState({
@@ -27,6 +27,10 @@ class Post extends React.Component {
   }
 }
 
-export default connect((state) => ({
-  posts: state.posts
-}))(Post)
+function mapStateToProps({ posts }) {
+  return {
+    posts
+  }
+}
+
+export default connect(mapStateToProps)(Post)

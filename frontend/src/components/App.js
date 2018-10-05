@@ -1,32 +1,39 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import LoadingBar from 'react-redux-loading'
 
-import ConnectedPost from './Post'
-import {
-  handleInitialData,
-} from '../actions/shared'
+import { handleInitialData } from '../actions/shared'
+import PostList from './PostList'
 
-class App extends React.Component {
+class App extends Component {
   componentDidMount () {
-    const { dispatch } = this.props
-
-    dispatch(handleInitialData())
+    this.props.dispatch(handleInitialData())
   }
 
   render() {
-    if (this.props.loading === true) {
-      return <h3>Loading</h3>
-    }
-
     return (
-      <div>
-        <h1>Readable</h1>
-        <ConnectedPost />
-      </div>
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          <div>
+            {this.props.loading === true
+              ? null
+              : <div>
+                  <Route path='/' exact component={PostList} />
+                </div>
+            }
+          </div>
+        </Fragment>
+      </Router>
     )
   }
 }
 
-export default connect((state) => ({
-  loading: state.loading
-}))(App)
+function mapStateToProps({ loading }) {
+  return {
+    loading
+  }
+}
+
+export default connect(mapStateToProps)(App)
