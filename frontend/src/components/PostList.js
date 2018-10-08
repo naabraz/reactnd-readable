@@ -25,6 +25,9 @@ class PostList extends Component {
             <Post post={post} key={post.id} />
           ))}
         </ul>
+        <button>
+          Add new post
+        </button>
         <CategoryList />
       </div>
 
