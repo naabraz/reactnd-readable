@@ -1,11 +1,15 @@
 import headers from './headers'
 
-const fetchPosts = () =>
+export const fetchPosts = () =>
   fetch('http://localhost:3010/posts', {
     headers
   })
   .then(res => res.json())
   .then(data => data)
 
-
-export default fetchPosts
+export const fetchPostsByCategory = (category) =>
+  fetch(`http://localhost:3010/${category}/posts`, {
+    headers
+  })
+  .then(res => res.json())
+  .then(data => data)

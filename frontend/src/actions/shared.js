@@ -1,7 +1,7 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-import fetchPosts from '../api/posts'
-import fetchCategories from '../api/categories'
+import { fetchPosts } from '../api/posts'
+import { fetchCategories } from '../api/categories'
 
 export const RECEIVE_DATA = 'RECEIVE_DATA'
 
