@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class CategoryList extends Component {
   render() {
@@ -8,7 +9,9 @@ class CategoryList extends Component {
         <h2>Categories</h2>
         {this.props.categories.map((category) => (
           <li key={category.name}>
-            <a href={category.path}>{category.name}</a>
+          <Link to={`/posts/${category.path}`}>
+            {category.name}
+          </Link>
           </li>
         ))}
       </div>

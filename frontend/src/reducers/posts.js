@@ -6,10 +6,7 @@ export default function posts (state = [], action) {
     case RECEIVE_DATA:
       return action.posts
     case RECEIVE_CATEGORY_POSTS:
-      return {
-        ...state,
-        posts: action.posts
-      }
+      return action.posts
     default:
       return state
   }
