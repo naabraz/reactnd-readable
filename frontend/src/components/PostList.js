@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import { connect} from 'react-redux'
 
+import { handleCategoryPosts } from '../actions/posts'
+import { handleInitialData } from '../actions/shared'
 import Post from './Post'
 import CategoryList from './CategoryList'
 
 class PostList extends Component {
+ 
+  componentDidMount() {
+    if (this.props.match.params.category) {
+      const { category } = this.props.match.params
+      this.props.dispatch(handleCategoryPosts(category)) 
+    } else {
+      this.props.dispatch(handleInitialData()) 
+    }
+  }
+
   render() {
     return (
       <div>
