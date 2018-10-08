@@ -1,17 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleCategoryPosts } from '../actions/posts'
+
 import Post from './Post'
+import CategoryList from './CategoryList'
 
 class PostList extends Component {
-
-  componentDidMount () {
-    if (this.props.match) {
-      const { category } = this.props.match.params
-      this.props.dispatch(handleCategoryPosts(category))
-    }
-  }
-
   render() {
     return (
       <div>
@@ -20,6 +13,7 @@ class PostList extends Component {
             <Post post={post} key={post.id} />
           ))}
         </ul>
+        <CategoryList />
       </div>
 
     )

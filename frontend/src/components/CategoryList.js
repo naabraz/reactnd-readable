@@ -1,28 +1,33 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+
+import { handleCategoryPosts } from '../actions/posts'
 
 class CategoryList extends Component {
+  fetchPostsByCategory = (category) => {
+    this.props.dispatch(handleCategoryPosts(category))
+  }
+
   render() {
     return (
       <div>
         <h2>Categories</h2>
         {this.props.categories.map((category) => (
           <li key={category.name}>
-          <Link to={`/${category.path}`}>
-            {category.name}
-          </Link>
+            <button onClick={() => this.fetchPostsByCategory(category.name)}>
+              {category.name}
+            </button>
           </li>
         ))}
       </div>
     )
   }
-
 }
 
-function mapStateToProps({ categories }) {
+function mapStateToProps({ categories, posts }) {
   return {
-    categories
+    categories,
+    posts
   }
 }
 
