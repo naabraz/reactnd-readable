@@ -1,22 +1,33 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-import { fetchPostsByCategory } from '../api/posts'
+import { fetchPostsByCategory, updatePostVoteScore } from '../api/posts'
 
 export const RECEIVE_CATEGORY_POSTS = 'RECEIVE_CATEGORY_POSTS'
 export const UPDATE_POST_VOTE_SCORE = 'UPDATE_POST_VOTE_SCORE'
 
-export function receiveCategoryPosts (posts) {
+function receiveCategoryPosts (posts) {
   return {
     type: RECEIVE_CATEGORY_POSTS,
     posts,
   }
 }
 
-export function updatePostVoteScore (vote, posts) {
+
+function postVoteScore (postId, posts) {
   return {
     type: UPDATE_POST_VOTE_SCORE,
-    vote,
-    posts,
+    posts: posts.map((post) => post.id === postId ? {...post, voteScore: post.voteScore += 1} : {...post } )
+  }
+}
+
+export function handleUpdateVoteScore (voteScore, id, posts) {
+  return (dispatch) => {
+    dispatch(showLoading())
+    updatePostVoteScore(voteScore, id)
+      .then(() => {
+        dispatch(postVoteScore(id, posts))
+        dispatch(hideLoading())
+      })
   }
 }
 
