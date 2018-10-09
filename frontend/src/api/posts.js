@@ -8,7 +8,7 @@ export const fetchPosts = () =>
   .then(data => data)
 
 export const fetchPostsByCategory = (category) =>
-  fetch(`${url}${category}/posts`, {
+  fetch(`${url}/${category}/posts`, {
     headers
   })
   .then(res => res.json())
