@@ -1,7 +1,7 @@
-import headers from './headers'
+import { headers, url } from './config'
 
 export const fetchCategories = () =>
-  fetch('http://localhost:3010/categories', {
+  fetch(`${url}/categories`, {
     headers
   })
   .then(res => res.json())
