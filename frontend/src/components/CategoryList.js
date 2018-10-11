@@ -8,7 +8,6 @@ class CategoryList extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <h2>Categories</h2>
