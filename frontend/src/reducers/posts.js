@@ -5,7 +5,9 @@ import { UPDATE_POST_VOTE_SCORE } from '../actions/posts'
 export default function posts (state = [], action) {
   switch(action.type) {
     case RECEIVE_DATA:
-      return action.posts
+      return {
+        ...state,
+      }, action.posts
     case RECEIVE_CATEGORY_POSTS:
       return action.posts
     case UPDATE_POST_VOTE_SCORE:

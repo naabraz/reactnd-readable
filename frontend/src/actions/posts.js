@@ -3,10 +3,11 @@ import { fetchPostsByCategory, updatePostVoteScore } from '../api/posts'
 export const RECEIVE_CATEGORY_POSTS = 'RECEIVE_CATEGORY_POSTS'
 export const UPDATE_POST_VOTE_SCORE = 'UPDATE_POST_VOTE_SCORE'
 
-function receiveCategoryPosts (posts) {
+function receiveCategoryPosts (posts, categories) {
   return {
     type: RECEIVE_CATEGORY_POSTS,
     posts,
+    categories
   }
 }
 

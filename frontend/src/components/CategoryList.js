@@ -23,9 +23,10 @@ class CategoryList extends Component {
   }
 }
 
-function mapStateToProps({ posts }) {
+function mapStateToProps({ posts, categories }) {
   return {
-    posts
+    posts,
+    categories
   }
 }
 

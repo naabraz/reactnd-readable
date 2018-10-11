@@ -34,7 +34,6 @@ class Post extends Component {
 }
 
 function mapStateToProps({ posts }) {
-
   return {
     posts
   }
