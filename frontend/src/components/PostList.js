@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect} from 'react-redux'
-
 import { handleCategoryPosts } from '../actions/posts'
 import { handleInitialData } from '../actions/shared'
 import Post from './Post'
@@ -18,26 +17,29 @@ class PostList extends Component {
   }
 
   render() {
+    const { posts, categories } = this.props
+
     return (
       <div>
         <ul>
-          {this.props.posts.map((post) => (
+          {posts.map((post) => (
             <Post post={post} key={post.id} />
           ))}
         </ul>
         <button>
           Add new post
         </button>
-        <CategoryList />
+        <CategoryList categories={categories}/>
       </div>
 
     )
   }
 }
 
-function mapStateToProps({ posts }) {
+function mapStateToProps({ posts, categories }) {
   return {
-    posts
+    posts,
+    categories,
   }
 }
 

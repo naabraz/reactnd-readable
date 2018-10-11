@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
 import { handleCategoryPosts } from '../actions/posts'
-import { handleInitialData } from '../actions/shared'
 
 class CategoryList extends Component {
-  componentDidMount() {
-    this.props.dispatch(handleInitialData())
-  }
   fetchPostsByCategory = (category) => {
     this.props.dispatch(handleCategoryPosts(category))
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <h2>Categories</h2>
@@ -28,9 +24,8 @@ class CategoryList extends Component {
   }
 }
 
-function mapStateToProps({ categories, posts }) {
+function mapStateToProps({ posts }) {
   return {
-    categories,
     posts
   }
 }
