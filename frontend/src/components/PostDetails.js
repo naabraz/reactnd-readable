@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { handlePostDetails } from '../actions/posts'
 
 import CommentsList from './CommentsList'
+import AddComment from './AddComment'
 
 class PostDetails extends Component {
 
@@ -31,6 +32,7 @@ class PostDetails extends Component {
         <Rating initialRating={post.voteScore} stop={10} onClick={(newValue) => this.updateVoteScore(newValue, post.voteScore)}/>
         <p><NavLink to='/edit' exact>Edit</NavLink> | <NavLink to='/edit' exact>Remove</NavLink></p>
         <CommentsList />
+        <AddComment />
       </div>
     )
   }
