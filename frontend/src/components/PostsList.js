@@ -5,9 +5,9 @@ import { handleInitialData } from '../actions/shared'
 import { handleReceivePostsByCategory, orderPosts } from '../actions/posts'
 
 import Post from './Post'
-import CategoryList from './CategoryList'
+import CategoriesList from './CategoriesList'
 
-class PostList extends Component {
+class PostsList extends Component {
 
   componentDidMount () {
     const { dispatch } = this.props
@@ -38,7 +38,7 @@ class PostList extends Component {
         <button>
           Add new post
         </button>
-        <CategoryList />	
+        <CategoriesList />	
       </div>
     )
   }
@@ -50,4 +50,4 @@ function mapStateToProps({ posts }) {
   }
 }
 
-export default connect(mapStateToProps)(PostList)
+export default connect(mapStateToProps)(PostsList)

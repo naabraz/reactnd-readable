@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 
-class CategoryList extends Component {
+class CategoriesList extends Component {
   render() {
     const { categories } = this.props
 
@@ -25,4 +25,4 @@ function mapStateToProps({ categories }) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(CategoryList))
+export default withRouter(connect(mapStateToProps)(CategoriesList))
