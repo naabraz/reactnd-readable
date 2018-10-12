@@ -1,23 +1,23 @@
 import { fetchPosts } from '../api/posts'
 import { fetchCategories } from '../api/categories'
+import { receivePosts } from '../actions/posts'
+import { receiveCategories } from '../actions/categories'
+import { setAuthedUser } from '../actions/authedUser'
+import { showLoading, hideLoading } from 'react-redux-loading'
 
-export const RECEIVE_DATA = 'RECEIVE_DATA'
-
-function receiveData (posts, categories) {
-  return {
-    type: RECEIVE_DATA,
-    posts,
-    categories,
-  }
-}
+const AUTHED_ID = 'nataliabraz'
 
 export function handleInitialData () {
   return (dispatch) => {
+    dispatch(showLoading())
     Promise.all([
       fetchPosts(),
-      fetchCategories()
+      fetchCategories(),
     ]).then(([posts, { categories }]) => {
-      dispatch(receiveData(posts, categories))
+      dispatch(receivePosts(posts))
+      dispatch(receiveCategories(categories))
+      dispatch(setAuthedUser(AUTHED_ID))
+      dispatch(hideLoading())
     })
   }
 }

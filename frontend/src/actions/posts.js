@@ -1,13 +1,12 @@
-import { fetchPostsByCategory, updatePostVoteScore } from '../api/posts'
+import { updatePostVoteScore } from '../api/posts'
 
-export const RECEIVE_CATEGORY_POSTS = 'RECEIVE_CATEGORY_POSTS'
+export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const UPDATE_POST_VOTE_SCORE = 'UPDATE_POST_VOTE_SCORE'
 
-function receiveCategoryPosts (posts, categories) {
+export function receivePosts (posts) {
   return {
-    type: RECEIVE_CATEGORY_POSTS,
+    type: RECEIVE_POSTS,
     posts,
-    categories
   }
 }
 
@@ -23,15 +22,6 @@ export function handleUpdateVoteScore ({ option, id, posts }) {
     updatePostVoteScore({ option }, id)
       .then(() => {
         dispatch(postVoteScore(id, posts))
-      })
-  }
-}
-
-export function handleCategoryPosts (category) {
-  return (dispatch) => {
-    fetchPostsByCategory(category)
-      .then((posts) => {
-        dispatch(receiveCategoryPosts(posts))
       })
   }
 }

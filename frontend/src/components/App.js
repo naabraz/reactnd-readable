@@ -16,8 +16,14 @@ class App extends Component {
         <Fragment>
           <div>
             <h1>Readable</h1>
-            <Route path='/' exact component={PostList} />
-            <Route path='/:category' component={PostList} />
+            {this.props.loading === true
+              ? null
+              : 
+              <div>
+                <Route path='/' exact component={PostList} />
+                <Route path='/:category' component={PostList} />
+              </div>
+            }
           </div>
         </Fragment>
       </Router>
@@ -25,4 +31,10 @@ class App extends Component {
   }
 }
 
-export default connect()(App)
+function mapStateToProps ({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect} from 'react-redux'
-import { handleCategoryPosts } from '../actions/posts'
+import { handleCategoryPosts } from '../actions/categories'
 import Post from './Post'
 import CategoryList from './CategoryList'
 
@@ -26,9 +26,8 @@ class PostList extends Component {
         <button>
           Add new post
         </button>
-        <CategoryList categories={categories}/>
+        <CategoryList categories={categories}/>	
       </div>
-
     )
   }
 }

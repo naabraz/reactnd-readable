@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleCategoryPosts } from '../actions/posts'
+import { handleCategoryPosts } from '../actions/categories'
 
 class CategoryList extends Component {
   fetchPostsByCategory = (category) => {
