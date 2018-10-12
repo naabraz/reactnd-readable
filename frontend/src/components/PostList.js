@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { handleInitialData } from '../actions/shared'
-import { handleReceivePostsByCategory } from '../actions/posts'
+import { handleReceivePostsByCategory, orderPosts } from '../actions/posts'
 
 import Post from './Post'
 import CategoryList from './CategoryList'
@@ -20,12 +20,16 @@ class PostList extends Component {
     }
   }
 
-  render() {
+  orderBy(posts) {
+    this.props.dispatch(orderPosts(posts))
+  }
 
+  render() {
     const { posts } = this.props
 
     return (
       <div>
+        <button onClick={() => this.orderBy(posts)}>Order by score</button>
         <ul>
           {posts.map((post) => (
             <Post post={post} key={post.id} />
