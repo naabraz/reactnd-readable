@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Rating from 'react-rating'
 import { connect } from 'react-redux'
-import { handleUpdateVoteScore } from '../actions/posts'
 
 class Post extends Component {
   voteOptions = {
@@ -16,7 +15,7 @@ class Post extends Component {
       posts: this.props.posts
     }
 
-    this.props.dispatch(handleUpdateVoteScore(voteScore))
+    console.log(voteScore)
   }
 
   render() {
@@ -37,7 +36,6 @@ function mapStateToProps({ posts }) {
   return {
     posts
   }
-
 }
 
 export default connect(mapStateToProps)(Post)

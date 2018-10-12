@@ -1,20 +1,28 @@
 import React, { Component } from 'react'
-import { connect} from 'react-redux'
-import { handleCategoryPosts } from '../actions/categories'
+import { connect } from 'react-redux'
+
+import { handleInitialData } from '../actions/shared'
+import { handleReceivePostsByCategory } from '../actions/posts'
+
 import Post from './Post'
 import CategoryList from './CategoryList'
 
 class PostList extends Component {
- 
-  componentDidMount() {
+
+  componentDidMount () {
+    const { dispatch } = this.props
+    
+    dispatch(handleInitialData())
+
     if (this.props.match.params.category) {
       const { category } = this.props.match.params
-      this.props.dispatch(handleCategoryPosts(category)) 
+      dispatch(handleReceivePostsByCategory(category))
     }
   }
 
   render() {
-    const { categories, posts } = this.props
+
+    const { posts } = this.props
 
     return (
       <div>
@@ -26,16 +34,15 @@ class PostList extends Component {
         <button>
           Add new post
         </button>
-        <CategoryList categories={categories}/>	
+        <CategoryList />	
       </div>
     )
   }
 }
 
-function mapStateToProps({ posts, categories }) {
+function mapStateToProps({ posts }) {
   return {
-    posts,
-    categories,
+    posts
   }
 }
 

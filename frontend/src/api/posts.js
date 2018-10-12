@@ -7,7 +7,7 @@ export const fetchPosts = () =>
   .then(res => res.json())
   .then(data => data)
 
-export const fetchPostsByCategory = (category) =>
+export const fetchCategoryPosts = (category) =>
   fetch(`${url}/${category}/posts`, {
     headers
   })
@@ -21,4 +21,4 @@ export const updatePostVoteScore = (vote, id) => {
     body: JSON.stringify(vote)
   })
 }
-
+  
