@@ -4,6 +4,7 @@ import Rating from 'react-rating'
 import { NavLink } from 'react-router-dom'
 
 import { handlePostDetails } from '../actions/posts'
+import { handlePostComments } from '../actions/comments'
 
 class PostDetails extends Component {
 
@@ -11,6 +12,7 @@ class PostDetails extends Component {
     const { id } = this.props.match.params
 
     this.props.dispatch(handlePostDetails(id))
+    this.props.dispatch(handlePostComments(id))
   }
 
   updateVoteScore () {
@@ -18,7 +20,7 @@ class PostDetails extends Component {
   }
 
   render() {
-    const { post } = this.props
+    const { post, comments } = this.props
 
     return (
       <div>
@@ -33,9 +35,10 @@ class PostDetails extends Component {
   }
 }
 
-function mapStateToProps ({ posts }) {
+function mapStateToProps ({ posts, comments }) {
   return {
-    post: posts
+    post: posts,
+    comments
   }
 }
 

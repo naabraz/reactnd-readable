@@ -1,15 +1,15 @@
-import { 
-  RECEIVE_DATA 
+import {
+  RECEIVE_DATA
 } from '../actions/shared'
 
-import { 
-  RECEIVE_POSTS_BY_CATEGORY, 
-  ORDER_POSTS, 
+import {
+  RECEIVE_POSTS_BY_CATEGORY,
+  ORDER_POSTS,
   GET_POST_DETAILS,
 } from '../actions/posts'
 
-export default function posts (state = [], action) {
-  switch(action.type) {
+export default function posts(state = [], action) {
+  switch (action.type) {
     case RECEIVE_POSTS_BY_CATEGORY:
       return action.posts
     case ORDER_POSTS:
