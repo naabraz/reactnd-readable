@@ -4,15 +4,22 @@ export const fetchPosts = () =>
   fetch(`${url}/posts`, {
     headers
   })
-  .then(res => res.json())
-  .then(data => data)
+    .then(res => res.json())
+    .then(data => data)
+
+export const fetchPostDetails = (id) => 
+  fetch(`${url}/posts/${id}`, {
+    headers
+  })
+    .then(res => res.json())
+    .then(data => data)
 
 export const fetchCategoryPosts = (category) =>
   fetch(`${url}/${category}/posts`, {
     headers
   })
-  .then(res => res.json())
-  .then(data => data)
+    .then(res => res.json())
+    .then(data => data)
 
 export const updatePostVoteScore = (vote, id) => {
   return fetch(`${url}/posts/${id}`, {
