@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import PostList from './PostList'
+import PostDetails from './PostDetails'
 
 class App extends Component {
 
@@ -11,7 +12,8 @@ class App extends Component {
         <div>
           <h1>Readable</h1>
           <Route path='/' exact component={PostList} />
-          <Route path='/:category' component={PostList} />
+          <Route path='/:category' exact component={PostList} />
+          <Route path='/:category/:id' exact component={PostDetails} />
         </div>
       </Router>
     )

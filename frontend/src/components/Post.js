@@ -24,7 +24,7 @@ class Post extends Component {
 
     return (
       <li>
-        <h2><Link to={`/post/${post.id}`}>{post.title}</Link></h2>
+        <h2><Link to={`/${post.category}/${post.id}`}>{post.title}</Link></h2>
         <p>Author: {post.author}</p>
         <p>Comments: {post.commentCount}</p>
         <Rating initialRating={post.voteScore} stop={10} onClick={(newValue) => this.updateVoteScore(newValue, post.voteScore)}/>
