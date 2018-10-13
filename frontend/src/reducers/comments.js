@@ -11,7 +11,7 @@ export default function comments(state = [], action) {
     case ADD_POST_COMMENT:
       return state.concat([action.comment])
     case REMOVE_POST_COMMENT:
-      return state.filter((comment) => comment.id !== action.comment.id)
+      return state.filter((comment) => comment.id !== action.comment)
     default:
       return state
   }

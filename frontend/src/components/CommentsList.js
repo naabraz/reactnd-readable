@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import {Link, withRouter } from 'react-router-dom'
 import Rating from 'react-rating'
 
-import { handlePostComments } from '../actions/comments'
+import { 
+  handlePostComments, 
+  handleRemovePostComment,
+} from '../actions/comments'
 
 class CommentsList extends Component {
 
@@ -13,8 +16,14 @@ class CommentsList extends Component {
     this.props.dispatch(handlePostComments(id))
   }
 
-  updateVoteScore () {
+  updateVoteScore() {
     console.log('get post component and treat it')
+  }
+
+  removeComment = (e, id) => {
+    e.preventDefault()
+
+    this.props.dispatch(handleRemovePostComment(id))
   }
 
   render() {
@@ -32,7 +41,7 @@ class CommentsList extends Component {
               <Rating initialRating={comment.voteScore} stop={10} onClick={(newValue) => this.updateVoteScore(newValue, comment.voteScore)} />
               <p>
                 <Link to={{ pathname: `/comment/edit/${comment.id}`, state: { comment }}}>Edit</Link> | 
-                <Link to='/edit'>Remove</Link>
+                <Link to='' onClick={(e) => this.removeComment(e, comment.id)}>Remove</Link>
               </p>
             </li>
           ))}
