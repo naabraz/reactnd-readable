@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Rating from 'react-rating'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { handlePostDetails } from '../actions/posts'
 
@@ -29,8 +29,14 @@ class PostDetails extends Component {
         <p>{post.body}</p>
         <p>Author: {post.author}</p>
         <p>Comments: {post.commentCount}</p>
+
         <Rating initialRating={post.voteScore} stop={10} onClick={(newValue) => this.updateVoteScore(newValue, post.voteScore)}/>
-        <p><NavLink to='/edit' exact>Edit</NavLink> | <NavLink to='/edit' exact>Remove</NavLink></p>
+
+        <p>
+          <Link to={{ pathname: `/post/edit/${post.id}`, state: {post: post }}}>Edit</Link> | 
+          <Link to='/edit'>Remove</Link>
+        </p>
+
         <CommentsList />
         <AddComment />
       </div>

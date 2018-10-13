@@ -8,6 +8,7 @@ import { handleAddPost } from '../actions/posts'
 import { handleFetchCategories } from '../actions/categories'
 
 class AddPost extends Component {
+
   componentDidMount() {
     this.props.dispatch(handleFetchCategories())
   }

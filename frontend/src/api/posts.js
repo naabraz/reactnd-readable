@@ -24,9 +24,18 @@ export const fetchCategoryPosts = (category) =>
   .then(res => res.json())
   .then(data => data)
 
-export const addNewPost = (post) =>
+export const addPost = (post) =>
   fetch(`${url}/posts`, {
     method: 'POST',
+    headers,
+    body: JSON.stringify(post)
+  })
+  .then(res => res.json())
+  .then(data => data)
+
+  export const updatePost = (post) =>
+  fetch(`${url}/posts/${post.id}`, {
+    method: 'PUT',
     headers,
     body: JSON.stringify(post)
   })

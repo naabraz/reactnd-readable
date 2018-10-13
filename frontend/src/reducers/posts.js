@@ -6,6 +6,7 @@ import {
   RECEIVE_POSTS_BY_CATEGORY,
   ORDER_POSTS,
   GET_POST_DETAILS,
+  UPDATE_POST,
 } from '../actions/posts'
 
 export default function posts(state = [], action) {
@@ -18,6 +19,10 @@ export default function posts(state = [], action) {
       return {
         ...state,
         ...action.post
+      }
+    case UPDATE_POST:
+      return {
+        ...state,
       }
     case RECEIVE_DATA:
       return action.posts
