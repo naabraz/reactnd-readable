@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import PostsList from './PostsList'
 import PostDetails from './PostDetails'
+import AddPost from './AddPost'
 
 class App extends Component {
 
@@ -11,9 +12,12 @@ class App extends Component {
       <Router>
         <div>
           <h1>Readable</h1>
-          <Route path='/' exact component={PostsList} />
-          <Route path='/:category' exact component={PostsList} />
-          <Route path='/:category/:id' exact component={PostDetails} />
+            <Switch>
+              <Route path='/' exact component={PostsList} />
+              <Route path='/new' exact component={AddPost} />
+              <Route path='/:category' exact component={PostsList} />
+              <Route path='/:category/:id' exact component={PostDetails} />
+            </Switch>
         </div>
       </Router>
     )

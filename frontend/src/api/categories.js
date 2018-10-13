@@ -1,4 +1,7 @@
-import { headers, url } from './config'
+import {
+  headers,
+  url
+} from './config'
 
 export const fetchCategories = () =>
   fetch(`${url}/categories`, {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { handleInitialData } from '../actions/shared'
 import { handleReceivePostsByCategory, orderPosts } from '../actions/posts'
@@ -35,9 +36,7 @@ class PostsList extends Component {
             <Post post={post} key={post.id} />
           ))}
         </ul>
-        <button>
-          Add new post
-        </button>
+        <Link to='/new'>New Post</Link>
         <CategoriesList />	
       </div>
     )

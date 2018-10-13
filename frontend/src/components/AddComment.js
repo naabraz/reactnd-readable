@@ -26,7 +26,7 @@ class AddComment extends Component {
 
   render() {
     return(
-      <form  onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <input type="text" name="author" placeholder="Name" />
         <textarea name="body" placeholder="Comment"/>
         <button>Add Comment</button>
