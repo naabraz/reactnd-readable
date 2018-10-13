@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {NavLink, withRouter } from 'react-router-dom'
+import {Link, withRouter } from 'react-router-dom'
 import Rating from 'react-rating'
 
 import { handlePostComments } from '../actions/comments'
@@ -30,7 +30,10 @@ class CommentsList extends Component {
               <p>Date: {comment.timestamp}</p>
               <p>{comment.body}</p>
               <Rating initialRating={comment.voteScore} stop={10} onClick={(newValue) => this.updateVoteScore(newValue, comment.voteScore)} />
-              <p><NavLink to='/edit' exact>Edit</NavLink> | <NavLink to='/edit' exact>Remove</NavLink></p>
+              <p>
+                <Link to={{ pathname: `/comment/edit/${comment.id}`, state: { comment }}}>Edit</Link> | 
+                <Link to='/edit'>Remove</Link>
+              </p>
             </li>
           ))}
         </ul>

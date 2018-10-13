@@ -5,6 +5,7 @@ import PostsList from './PostsList'
 import PostDetails from './PostDetails'
 import AddPost from './AddPost'
 import EditPost from './EditPost'
+import EditComment from './EditComment'
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ class App extends Component {
               <Route path='/:category' exact component={PostsList} />
               <Route path='/:category/:id' exact component={PostDetails} />
               <Route path='/post/edit/:id' exact component={EditPost} />
+              <Route path='/comment/edit/:id' exact component={EditComment} />
             </Switch>
         </div>
       </Router>

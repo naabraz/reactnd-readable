@@ -16,7 +16,7 @@ export const addPostComment = (comment) =>
     headers,
     body: JSON.stringify(comment)
   })
-  .then(res => console.log(res))
+  .then(res => res.json())
   .then(data => data)
 
 export const removePostComment = (id) =>
@@ -24,5 +24,14 @@ export const removePostComment = (id) =>
     method: 'DELETE',
     headers,
   })
-  .then(res => console.log(res))
+  .then(res => res.json())
+  .then(data => data)
+
+export const editPostComment = (comment) =>
+  fetch(`${url}/comments/${comment.id}`, {
+    method: 'PUT',
+    headers,
+    body: JSON.stringify(comment)
+  })
+  .then(res => res.json())
   .then(data => data)

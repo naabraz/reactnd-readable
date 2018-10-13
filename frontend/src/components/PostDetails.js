@@ -33,7 +33,7 @@ class PostDetails extends Component {
         <Rating initialRating={post.voteScore} stop={10} onClick={(newValue) => this.updateVoteScore(newValue, post.voteScore)}/>
 
         <p>
-          <Link to={{ pathname: `/post/edit/${post.id}`, state: {post: post }}}>Edit</Link> | 
+          <Link to={{ pathname: `/post/edit/${post.id}`, state: { post }}}>Edit</Link> | 
           <Link to='/edit'>Remove</Link>
         </p>
 

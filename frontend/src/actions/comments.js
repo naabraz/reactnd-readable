@@ -1,12 +1,9 @@
-import {
-  fetchPostComments,
-  addPostComment,
-  removePostComment
-} from '../api/comments'
+import * as api from '../api/comments'
 
 export const GET_POST_COMMENTS = 'GET_POST_COMMENTS'
 export const ADD_POST_COMMENT = 'ADD_POST_COMMENT'
 export const REMOVE_POST_COMMENT = 'REMOVE_POST_COMMENT'
+export const EDIT_POST_COMMENT = 'EDIT_POST_COMMENT'
 
 function getPostComments(comments) {
   return {
@@ -29,9 +26,16 @@ function removeComment(comment) {
   }
 }
 
+function editComment(comment) {
+  return {
+    type: EDIT_POST_COMMENT,
+    comment,
+  }
+}
+
 export function handlePostComments(id) {
   return (dispatch) => {
-    fetchPostComments(id)
+    api.fetchPostComments(id)
       .then((comments) => {
         dispatch(getPostComments(comments))
       })
@@ -42,7 +46,7 @@ export function handleAddPostComment(comment) {
   return (dispatch) => {
     dispatch(addComment(comment))
 
-    addPostComment(comment)
+    api.addPostComment(comment)
       .catch(() => {
         dispatch(removeComment(comment))
       })
@@ -53,9 +57,18 @@ export function handleRemovePostComment(comment) {
   return (dispatch) => {
     dispatch(removeComment(comment))
 
-    removePostComment(comment)
+    api.removePostComment(comment)
       .catch(() => {
         dispatch(addComment(comment))
+      })
+  }
+}
+
+export function handleEditPostComment(comment) {
+  return (dispatch) => {
+    api.editPostComment(comment)
+      .catch(() => {
+        dispatch(editComment(comment))
       })
   }
 }
