@@ -4,6 +4,7 @@ export const GET_POST_COMMENTS = 'GET_POST_COMMENTS'
 export const ADD_POST_COMMENT = 'ADD_POST_COMMENT'
 export const REMOVE_POST_COMMENT = 'REMOVE_POST_COMMENT'
 export const EDIT_POST_COMMENT = 'EDIT_POST_COMMENT'
+export const UPDATE_COMMENT_SCORE = 'UPDATE_COMMENT_SCORE'
 
 function getPostComments(comments) {
   return {
@@ -15,7 +16,7 @@ function getPostComments(comments) {
 function addComment(comment) {
   return {
     type: ADD_POST_COMMENT,
-    comment
+    comment,
   }
 }
 
@@ -30,6 +31,13 @@ function editComment(comment) {
   return {
     type: EDIT_POST_COMMENT,
     comment,
+  }
+}
+
+function updateCommentScore(voteScore) {
+  return {
+    type: UPDATE_COMMENT_SCORE,
+    voteScore,
   }
 }
 
@@ -69,6 +77,15 @@ export function handleEditPostComment(comment) {
     api.editPostComment(comment)
       .catch(() => {
         dispatch(editComment(comment))
+      })
+  }
+}
+
+export function handleUpdateCommentScore(voteScore) {
+  return (dispatch) => {
+    api.updateCommentScore(voteScore)
+      .then(() => {
+        dispatch(updateCommentScore(voteScore))
       })
   }
 }

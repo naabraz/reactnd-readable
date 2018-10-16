@@ -10,27 +10,38 @@ import {
   handleUpdatePostVoteScore,
 } from '../actions/posts'
 
+import {
+  handleUpdateCommentScore,
+} from '../actions/comments'
+
 class VoteScore extends Component {
   voteOptions = {
     upVote: 'upVote',
-    downVote: 'downVote'
+    downVote: 'downVote',
+  }
+
+  dataOptions = {
+    comment: 'comment',
+    post: 'post',
   }
 
   state = {
     initialRating: this.props.initialRating
   }
 
-  updateVoteScore (option) {
+  updateVoteScore(option) {
+    const { type, data } = this.props
+
     const voteScore = {
       option,
-      id: this.props.data.id
+      id: data.id
     }
 
     this.setState((state) => ({
       initialRating: option === this.voteOptions.upVote ? state.initialRating + 1 : state.initialRating - 1
     }))
 
-    this.props.dispatch(handleUpdatePostVoteScore(voteScore))
+    type === 'post' ? this.props.dispatch(handleUpdatePostVoteScore(voteScore)) : this.props.dispatch(handleUpdateCommentScore(voteScore)) 
   }
 
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Link, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import { 
   handlePostComments, 
@@ -40,7 +40,9 @@ class CommentsList extends Component {
             <li key={comment.id}>
               <p>Author: {comment.author} | Date: {new Date(comment.timestamp).toDateString()}</p>
               <p>{comment.body}</p>
-              <VoteScore initialRating={comment.voteScore} />
+              
+              <VoteScore initialRating={comment.voteScore} data={comment} type={'comment'} />
+              
               <p>
                 <Link to={{ pathname: `/comment/edit/${comment.id}`, state: { comment }}}>Edit</Link> | 
                 <Link to='' onClick={(e) => this.removeComment(e, comment.id)}>Remove</Link>

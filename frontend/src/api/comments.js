@@ -35,3 +35,12 @@ export const editPostComment = (comment) =>
   })
   .then(res => res.json())
   .then(data => data)
+
+export const updateCommentScore = (voteScore) =>
+  fetch(`${url}/comments/${voteScore.id}`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(voteScore)
+  })
+  .then(res => res.json())
+  .then(data => data)

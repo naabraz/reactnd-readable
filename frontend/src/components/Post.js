@@ -14,7 +14,9 @@ class Post extends Component {
           <Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
         </h2>
         <p>Date: {new Date(post.timestamp).toDateString()}</p>
-        <VoteScore initialRating={post.voteScore} data={post} />
+        
+        <VoteScore initialRating={post.voteScore} data={post} type={'post'} />
+        
         <p>
           Author: {post.author} | Comments: {post.commentCount}
         </p>

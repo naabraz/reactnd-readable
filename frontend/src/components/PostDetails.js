@@ -39,7 +39,7 @@ class PostDetails extends Component {
             <p>Author: {post.author}</p>
             <p>Comments: {post.commentCount}</p>
 
-            <VoteScore initialRating={post.voteScore} />
+            <VoteScore initialRating={post.voteScore} data={post} type={'post'} />
 
             <p>
               <Link to={{ pathname: `/post/edit/${post.id}`, state: { post }}}>Edit</Link> |
