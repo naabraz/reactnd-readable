@@ -2,14 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { 
+import {
   handleInitialData,
 } from '../actions/shared'
-
-import { 
-  handleReceivePostsByCategory, 
-  orderPosts 
-} from '../actions/posts'
 
 import Post from './Post'
 import CategoriesList from './CategoriesList'
@@ -17,19 +12,10 @@ import CategoriesList from './CategoriesList'
 class PostsList extends Component {
 
   componentDidMount () {
-    const { dispatch } = this.props
-    
-    dispatch(handleInitialData())
-
-    if (this.props.match.params.category) {
-      const { category } = this.props.match.params
-      dispatch(handleReceivePostsByCategory(category))
-    }
+    this.props.dispatch(handleInitialData())
   }
 
-  orderBy(posts) {
-    this.props.dispatch(orderPosts(posts))
-  }
+  orderBy = () => this.props.posts.sort((a, b) => a.timestamp + b.timestamp)
 
   render() {
     const { posts } = this.props
@@ -37,13 +23,13 @@ class PostsList extends Component {
     return (
       <div>
         <div className='posts-list'>
-          <button onClick={() => this.orderBy(posts)}>Order by score</button>
+          <button onClick={this.orderBy}>Order by score</button>
           <ul>
             {posts.map((post) => (
               <Post post={post} key={post.id} />
             ))}
           </ul>
-          <Link to='/new'>New Post</Link>	
+          <Link to='/new'>New Post</Link>
         </div>
         <CategoriesList />
       </div>
@@ -51,9 +37,11 @@ class PostsList extends Component {
   }
 }
 
-function mapStateToProps({ posts }) {
+function mapStateToProps({ posts }, { match }) {
+  const { category } = match.params
+
   return {
-    posts,
+    posts: category ? posts.filter((post) => post.category === category) : posts,
   }
 }
 
