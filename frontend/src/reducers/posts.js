@@ -18,10 +18,7 @@ export default function posts(state = [], action) {
     case ORDER_POSTS:
       return action.posts.sort((a, b) => a.timestamp + b.timestamp)
     case GET_POST_DETAILS:
-      return {
-        ...state,
-        ...action.post
-      }
+      return [action.post]
     case UPDATE_POST:
       return {
         ...state,

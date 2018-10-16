@@ -1,3 +1,5 @@
+import { showLoading, hideLoading } from 'react-redux-loading'
+
 import * as api from '../api/posts'
 
 export const RECEIVE_POSTS_BY_CATEGORY = 'RECEIVE_POSTS_BY_CATEGORY'
@@ -68,8 +70,10 @@ export function handleReceivePostsByCategory(category) {
 
 export function handlePostDetails(id) {
   return (dispatch) => {
+    dispatch(showLoading())
     api.fetchPostDetails(id)
       .then((post) => {
+        dispatch(hideLoading())
         dispatch(fetchPostDetails(post))
       })
   }

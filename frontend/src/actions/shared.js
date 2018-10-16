@@ -20,8 +20,8 @@ export function handleInitialData () {
       fetchPosts(),
       fetchCategories(),
     ]).then(([posts, { categories }]) => {
-      dispatch(hideLoading())
       dispatch(receiveInitialData(posts, categories))
+      dispatch(hideLoading())
     })
   }
 }

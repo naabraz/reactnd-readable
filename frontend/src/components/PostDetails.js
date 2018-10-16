@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 
 import VoteScore from './VoteScore'
 
-import { 
-  handlePostDetails, 
-  handleRemovePost, 
+import {
+  handlePostDetails,
+  handleRemovePost,
 } from '../actions/posts'
 
 import CommentsList from './CommentsList'
@@ -27,34 +27,43 @@ class PostDetails extends Component {
   }
 
   render() {
-    const { post } = this.props
-
+    const { post, loadingBar } = this.props
+    console.log('MY PROPS POST', post)
+    console.log('MY PROPS LOADING BAR', loadingBar)
     return (
       <div>
-        <h2>{post.title}</h2>
-        <p>{post.body}</p>
-        <p>Author: {post.author}</p>
-        <p>Comments: {post.commentCount}</p>
+        {loadingBar.default === 1 ?
+            null
+            :
+          <div>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+            <p>Author: {post.author}</p>
+            <p>Comments: {post.commentCount}</p>
 
-        <VoteScore initialRating={post.voteScore} />
+            <VoteScore initialRating={post.voteScore} />
 
-        <p>
-          <Link to={{ pathname: `/post/edit/${post.id}`, state: { post }}}>Edit</Link> | 
-          <Link to='' onClick={(e) => this.removePost(e, post)}>Remove</Link>
-        </p>
+            <p>
+              <Link to={{ pathname: `/post/edit/${post.id}`, state: { post }}}>Edit</Link> |
+              <Link to='' onClick={(e) => this.removePost(e, post)}>Remove</Link>
+            </p>
 
-        <hr />
+            <hr />
 
-        <CommentsList />
-        <AddComment />
+            <CommentsList />
+            <AddComment />
+          </div>
+        }
       </div>
+
     )
   }
 }
 
-function mapStateToProps ({ posts }) {
+function mapStateToProps ({ posts, loadingBar }) {
   return {
-    post: posts,
+    post: posts[0],
+    loadingBar
   }
 }
 
