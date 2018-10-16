@@ -28,13 +28,11 @@ class PostDetails extends Component {
 
   render() {
     const { post, loadingBar } = this.props
-    console.log('MY PROPS POST', post)
-    console.log('MY PROPS LOADING BAR', loadingBar)
+
     return (
       <div>
-        {loadingBar.default === 1 ?
-            null
-            :
+        {loadingBar.default !== 0 ? null
+          :
           <div>
             <h2>{post.title}</h2>
             <p>{post.body}</p>

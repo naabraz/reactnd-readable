@@ -73,8 +73,8 @@ export function handlePostDetails(id) {
     dispatch(showLoading())
     api.fetchPostDetails(id)
       .then((post) => {
-        dispatch(hideLoading())
         dispatch(fetchPostDetails(post))
+        dispatch(hideLoading())
       })
   }
 }
