@@ -22,15 +22,20 @@ class PostsList extends Component {
 
     return (
       <div>
-        <div className='posts-list'>
-          <button onClick={this.orderBy}>Order by score</button>
-          <ul>
-            {posts.map((post) => (
-              <Post post={post} key={post.id} />
-            ))}
-          </ul>
-          <Link to='/new'>New Post</Link>
-        </div>
+        {posts.length === 0 ?
+          <div>
+            <p>There is no posts to show :(</p>
+          </div> :
+          <div className='posts-list'>
+            <button onClick={this.orderBy}>Order by score</button>
+            <ul>
+              {posts.map((post) => (
+                <Post post={post} key={post.id} />
+              ))}
+            </ul>
+            <Link to='/new'>New Post</Link>
+          </div>
+        }
         <CategoriesList />
       </div>
     )
