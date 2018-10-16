@@ -27,7 +27,7 @@ class PostsList extends Component {
             <p>There is no posts to show :(</p>
           </div> :
           <div className='posts-list'>
-            <button onClick={this.orderBy}>Order by score</button>
+            <Link to={''} onClick={this.orderBy}>Order posts by score</Link>
             <ul>
               {posts.map((post) => (
                 <Post post={post} key={post.id} />
