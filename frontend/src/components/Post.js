@@ -1,33 +1,22 @@
 import React, { Component } from 'react'
-import Rating from 'react-rating'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import VoteScore from './VoteScore'
+
 class Post extends Component {
-  voteOptions = {
-    upVote: 'upVote',
-    downVote: 'downVote'
-  }
-
-  updateVoteScore (newValue, oldScore) {
-    const voteScore = {
-      option: newValue < oldScore ? this.voteOptions.downVote : this.voteOptions.upVote,
-      id: this.props.post.id,
-      posts: this.props.posts
-    }
-
-    console.log(voteScore)
-  }
-
   render() {
     const { post } = this.props
 
     return (
       <li>
-        <h2><Link to={`/${post.category}/${post.id}`}>{post.title}</Link></h2>
-        <p>Author: {post.author}</p>
-        <p>Comments: {post.commentCount}</p>
-        <Rating initialRating={post.voteScore} stop={10} onClick={(newValue) => this.updateVoteScore(newValue, post.voteScore)}/>
+        <h2>
+          <Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
+        </h2>
+        <VoteScore initialRating={post.voteScore} />
+        <p>
+          Author: {post.author} | Comments: {post.commentCount}
+        </p>
       </li>
    )
   }

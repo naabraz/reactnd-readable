@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Rating from 'react-rating'
 import { Link } from 'react-router-dom'
+
+import VoteScore from './VoteScore'
 
 import { 
   handlePostDetails, 
@@ -17,10 +18,6 @@ class PostDetails extends Component {
     const { id } = this.props.match.params
 
     this.props.dispatch(handlePostDetails(id))
-  }
-
-  updateVoteScore () {
-    console.log('get post component and treat it')
   }
 
   removePost (e, post) {
@@ -39,12 +36,14 @@ class PostDetails extends Component {
         <p>Author: {post.author}</p>
         <p>Comments: {post.commentCount}</p>
 
-        <Rating initialRating={post.voteScore} stop={10} onClick={(newValue) => this.updateVoteScore(newValue, post.voteScore)}/>
+        <VoteScore initialRating={post.voteScore} />
 
         <p>
           <Link to={{ pathname: `/post/edit/${post.id}`, state: { post }}}>Edit</Link> | 
           <Link to='' onClick={(e) => this.removePost(e, post)}>Remove</Link>
         </p>
+
+        <hr />
 
         <CommentsList />
         <AddComment />

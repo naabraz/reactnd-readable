@@ -2,8 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { handleInitialData } from '../actions/shared'
-import { handleReceivePostsByCategory, orderPosts } from '../actions/posts'
+import { 
+  handleInitialData,
+} from '../actions/shared'
+
+import { 
+  handleReceivePostsByCategory, 
+  orderPosts 
+} from '../actions/posts'
 
 import Post from './Post'
 import CategoriesList from './CategoriesList'
@@ -30,14 +36,16 @@ class PostsList extends Component {
 
     return (
       <div>
-        <button onClick={() => this.orderBy(posts)}>Order by score</button>
-        <ul>
-          {posts.map((post) => (
-            <Post post={post} key={post.id} />
-          ))}
-        </ul>
-        <Link to='/new'>New Post</Link>
-        <CategoriesList />	
+        <div className='posts-list'>
+          <button onClick={() => this.orderBy(posts)}>Order by score</button>
+          <ul>
+            {posts.map((post) => (
+              <Post post={post} key={post.id} />
+            ))}
+          </ul>
+          <Link to='/new'>New Post</Link>	
+        </div>
+        <CategoriesList />
       </div>
     )
   }

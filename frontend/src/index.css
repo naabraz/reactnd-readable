@@ -3,9 +3,73 @@ body {
   padding: 0;
   font-family: sans-serif;
   color: #252525;
+  list-style: none;
+}
+
+a, a:visited {
+  color: #EC176C;
+  text-decoration: none
+}
+
+a:hover {
+  color: #EC176C;
+  text-decoration: underline;
 }
 
 .container {
   max-width: 960px;
   margin: 0 auto;
+  list-style: none;
+  padding-left: 50px;
+}
+
+.container .vote-icon {
+  font-size: 26px;
+}
+
+.container .posts-list {
+  float: left;
+}
+
+.container .posts-list ul {
+  list-style: none;
+} 
+
+.container .categories {
+  float: right;
+  margin-right: 20%;
+}
+
+.container .posts-list ul li {
+  border: solid 1px #ccc;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.container .nav {
+  float: right;
+  margin-right: 10%;
+}
+
+.comments ul {
+  list-style: none;
+}
+
+input, textarea {
+  border: solid 1px #ccc;
+  padding: 10px;
+  display: block;
+  margin-bottom: 15px;
+  width: 80%;
+  font-size: 14px;  
+}
+
+textarea {
+  height: 100px;
+  width: 80%;
+}
+
+button {
+  padding: 10px;
 }

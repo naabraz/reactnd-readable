@@ -7,7 +7,7 @@ class CategoriesList extends Component {
     const { categories } = this.props
 
     return (
-      <div>
+      <div className='categories'>
         <h2>Categories</h2>
         {categories.map((category) => (
           <li key={category.name}>

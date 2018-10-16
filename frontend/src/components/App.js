@@ -6,13 +6,15 @@ import PostDetails from './PostDetails'
 import AddPost from './AddPost'
 import EditPost from './EditPost'
 import EditComment from './EditComment'
+import Nav from './Nav'
 
 class App extends Component {
 
   render() {
     return (
       <Router>
-        <div>
+        <div className='container'>
+          <Nav />
           <h1>Readable</h1>
             <Switch>
               <Route path='/' exact component={PostsList} />
