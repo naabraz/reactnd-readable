@@ -6,6 +6,7 @@ export const GET_POST_DETAILS = 'GET_POST_DETAILS'
 export const ADD_POST = 'ADD_POST'
 export const UPDATE_POST = 'UPDATE_POST'
 export const REMOVE_POST = 'REMOVE_POST'
+export const UPDATE_VOTE_SCORE = 'UPDATE_VOTE_SCORE'
 
 function receivePostsByCategory(posts) {
   return {
@@ -46,6 +47,13 @@ function updatePost(post) {
   return {
     type: UPDATE_POST,
     post
+  }
+}
+
+function updatePostVoteScore(voteScore) {
+  return {
+    type: UPDATE_VOTE_SCORE,
+    voteScore
   }
 }
 
@@ -90,6 +98,15 @@ export function handleUpdatePost(post) {
     api.updatePost(post)
       .then(() => {
         dispatch(updatePost(post))
+      })
+  }
+}
+
+export function handleUpdatePostVoteScore(voteScore) {
+  return (dispatch) => {
+    api.updatePostVoteScore(voteScore)
+      .then(() => {
+        dispatch(updatePostVoteScore(voteScore))
       })
   }
 }

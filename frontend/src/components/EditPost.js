@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import serializeForm from 'form-serialize'
 import { Redirect } from 'react-router-dom'
 
-import { handleUpdatePost } from '../actions/posts'
+import {
+  handleUpdatePost,
+} from '../actions/posts'
 
 class EditPost extends Component {
 

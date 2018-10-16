@@ -50,11 +50,11 @@ export const updatePost = (post) =>
   .then(res => res.json())
   .then(data => data)
 
-export const updatePostVoteScore = (vote, id) =>
-  fetch(`${url}/posts/${id}`, {
+export const updatePostVoteScore = (voteScore) =>
+  fetch(`${url}/posts/${voteScore.id}`, {
     method: 'POST',
     headers,
-    body: JSON.stringify(vote)
+    body: JSON.stringify(voteScore)
   })
   .then(res => res.json())
   .then(data => data)

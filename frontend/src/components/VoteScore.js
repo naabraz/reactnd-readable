@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import Rating from 'react-rating'
+import { connect } from 'react-redux'
 
-import { 
-  TiStarOutline, 
+import {
+  TiStarOutline,
   TiStarFullOutline,
 } from 'react-icons/ti'
+
+import {
+  handleUpdatePostVoteScore,
+} from '../actions/posts'
 
 class VoteScore extends Component {
   voteOptions = {
@@ -15,20 +20,20 @@ class VoteScore extends Component {
   updateVoteScore (newValue, oldScore) {
     const voteScore = {
       option: newValue < oldScore ? this.voteOptions.downVote : this.voteOptions.upVote,
-      id: this.props.post.id,
-      posts: this.props.posts
+      id: this.props.data.id,
+      newValue,
     }
 
-    console.log(voteScore)
+    this.props.dispatch(handleUpdatePostVoteScore(voteScore))
   }
 
   render() {
     const { initialRating } = this.props
 
     return (
-      <Rating 
-        initialRating={initialRating} 
-        stop={5} 
+      <Rating
+        initialRating={initialRating}
+        stop={5}
         onClick={(newValue) => this.updateVoteScore(newValue, initialRating)}
         emptySymbol={<TiStarOutline className='vote-icon' />}
         fullSymbol={<TiStarFullOutline className='vote-icon' />} />
@@ -36,4 +41,4 @@ class VoteScore extends Component {
   }
 }
 
-export default VoteScore
+export default connect()(VoteScore)

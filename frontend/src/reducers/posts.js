@@ -7,7 +7,8 @@ import {
   ORDER_POSTS,
   GET_POST_DETAILS,
   UPDATE_POST,
-  REMOVE_POST
+  REMOVE_POST,
+  UPDATE_VOTE_SCORE,
 } from '../actions/posts'
 
 export default function posts(state = [], action) {
@@ -27,6 +28,9 @@ export default function posts(state = [], action) {
       }
     case REMOVE_POST:
       return action.post
+    case UPDATE_VOTE_SCORE:
+      state.filter((post) => post.id === action.voteScore.id).map((post) => post.voteScore = action.voteScore.newValue)
+      return state
     case RECEIVE_DATA:
       return action.posts
     default:
