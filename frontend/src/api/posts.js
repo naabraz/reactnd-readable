@@ -3,16 +3,12 @@ import {
   url,
 } from './config'
 
-import { 
-  filterDeleted 
-} from '../helpers/filterDeleted'
-
 export const fetchPosts = () =>
   fetch(`${url}/posts`, {
     headers,
   })
   .then(res => res.json())
-  .then(data => filterDeleted(data))
+  .then(data => data)
 
 export const fetchPostDetails = (id) =>
   fetch(`${url}/posts/${id}`, {
