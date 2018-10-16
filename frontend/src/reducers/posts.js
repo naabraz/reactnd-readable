@@ -7,6 +7,7 @@ import {
   ORDER_POSTS,
   GET_POST_DETAILS,
   UPDATE_POST,
+  REMOVE_POST
 } from '../actions/posts'
 
 export default function posts(state = [], action) {
@@ -24,6 +25,8 @@ export default function posts(state = [], action) {
       return {
         ...state,
       }
+    case REMOVE_POST:
+      return action.post
     case RECEIVE_DATA:
       return action.posts
     default:

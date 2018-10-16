@@ -1,6 +1,6 @@
 import {
   headers,
-  url
+  url,
 } from './config'
 
 export const fetchCategories = () =>

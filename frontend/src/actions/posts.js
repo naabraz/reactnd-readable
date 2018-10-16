@@ -5,6 +5,7 @@ export const ORDER_POSTS = 'ORDER_POSTS'
 export const GET_POST_DETAILS = 'GET_POST_DETAILS'
 export const ADD_POST = 'ADD_POST'
 export const UPDATE_POST = 'UPDATE_POST'
+export const REMOVE_POST = 'REMOVE_POST'
 
 function receivePostsByCategory(posts) {
   return {
@@ -23,6 +24,13 @@ export function orderPosts(posts) {
 export function fetchPostDetails(post) {
   return {
     type: GET_POST_DETAILS,
+    post,
+  }
+}
+
+function removePost(post) {
+  return {
+    type: REMOVE_POST,
     post,
   }
 }
@@ -64,6 +72,15 @@ export function handleAddPost(post) {
     api.addPost(post)
       .then(() => {
         dispatch(addPost(post))
+      })
+  }
+}
+
+export function handleRemovePost(post) {
+  return (dispatch) => {
+    api.removePost(post.id)
+      .then(() => {
+        dispatch(removePost(post))
       })
   }
 }

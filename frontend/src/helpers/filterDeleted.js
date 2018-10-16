@@ -1,0 +1,1 @@
+export const filterDeleted = (array) => array.filter((arr) => !arr.deleted)

@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import Rating from 'react-rating'
 import { Link } from 'react-router-dom'
 
-import { handlePostDetails } from '../actions/posts'
+import { 
+  handlePostDetails, 
+  handleRemovePost, 
+} from '../actions/posts'
 
 import CommentsList from './CommentsList'
 import AddComment from './AddComment'
@@ -20,6 +23,12 @@ class PostDetails extends Component {
     console.log('get post component and treat it')
   }
 
+  removePost (e, post) {
+    e.preventDefault()
+
+    this.props.dispatch(handleRemovePost(post))
+  }
+
   render() {
     const { post } = this.props
 
@@ -34,7 +43,7 @@ class PostDetails extends Component {
 
         <p>
           <Link to={{ pathname: `/post/edit/${post.id}`, state: { post }}}>Edit</Link> | 
-          <Link to='/edit'>Remove</Link>
+          <Link to='' onClick={(e) => this.removePost(e, post)}>Remove</Link>
         </p>
 
         <CommentsList />
