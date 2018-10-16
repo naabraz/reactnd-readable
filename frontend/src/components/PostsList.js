@@ -53,7 +53,7 @@ class PostsList extends Component {
 
 function mapStateToProps({ posts }) {
   return {
-    posts
+    posts,
   }
 }
 

@@ -1,3 +1,5 @@
+import { showLoading, hideLoading } from 'react-redux-loading'
+
 import { fetchPosts } from '../api/posts'
 import { fetchCategories } from '../api/categories'
 
@@ -13,10 +15,12 @@ function receiveInitialData (posts, categories) {
 
 export function handleInitialData () {
   return (dispatch) => {
+    dispatch(showLoading())
     Promise.all([
       fetchPosts(),
       fetchCategories(),
     ]).then(([posts, { categories }]) => {
+      dispatch(hideLoading())
       dispatch(receiveInitialData(posts, categories))
     })
   }
