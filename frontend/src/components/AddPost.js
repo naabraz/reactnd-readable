@@ -12,7 +12,7 @@ class AddPost extends Component {
   componentDidMount() {
     this.props.dispatch(handleFetchCategories())
   }
-  
+
   state = {
     toHome: false,
   }
@@ -38,20 +38,27 @@ class AddPost extends Component {
   render() {
     const { categories } = this.props
     const { toHome } = this.state
-    
+
     if (toHome) {
       return <Redirect to={'/'} />
     }
 
-    console.log(categories)
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" name="title" placeholder="Title" />
-        <input type="text" name="author" placeholder="Author" />
-        <input type="text" name="category" placeholder="Category" />
-        <textarea name="body" placeholder="Post"/>
-        <button>Add Post</button>
-      </form>
+      <div>
+        <h2>New Post</h2>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="title" placeholder="Title" required />
+          <input type="text" name="author" placeholder="Author" required />
+          <select name="category">
+            {categories.map((category) => (
+              <option value={category.name} key={category.name}>{category.name}</option>
+            ))}
+          </select>
+          <textarea name="body" placeholder="Post"/>
+          <button>Add Post</button>
+       </form>
+      </div>
+
     )
   }
 }

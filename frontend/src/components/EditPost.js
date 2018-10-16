@@ -16,9 +16,9 @@ class EditPost extends Component {
     e.preventDefault()
 
     const postUpdated = { ...serializeForm(e.target, {hash: true}), id: this.state.id}
-  
+
     this.props.dispatch(handleUpdatePost(postUpdated))
-    
+
     this.setState(() => ({
       toHome: true
     }))
@@ -40,11 +40,14 @@ class EditPost extends Component {
     }
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" name="title" value={title} onChange={this.handleChangeTitle} />
-        <textarea name="body" value={body} onChange={this.handleChangeBody} />
-        <button>Send</button>
-      </form>
+      <div>
+        <h2>Edit Post</h2>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="title" value={title} onChange={this.handleChangeTitle} required />
+          <textarea name="body" value={body} onChange={this.handleChangeBody} required />
+          <button>Send</button>
+        </form>
+      </div>
     )
   }
 }

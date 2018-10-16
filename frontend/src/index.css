@@ -33,7 +33,7 @@ a:hover {
 
 .container .posts-list ul {
   list-style: none;
-} 
+}
 
 .container .categories {
   float: right;
@@ -56,13 +56,17 @@ a:hover {
   list-style: none;
 }
 
-input, textarea {
+input, textarea, select {
   border: solid 1px #ccc;
   padding: 10px;
   display: block;
   margin-bottom: 15px;
   width: 80%;
-  font-size: 14px;  
+  font-size: 14px;
+}
+
+select {
+  width: 82.3%;
 }
 
 textarea {

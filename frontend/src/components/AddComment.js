@@ -10,7 +10,7 @@ class AddComment extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    
+
     const { id } = this.props.match.params
     const formValues = serializeForm(e.target, {hash: true})
 
@@ -27,8 +27,8 @@ class AddComment extends Component {
   render() {
     return(
       <form onSubmit={this.handleSubmit}>
-        <input type="text" name="author" placeholder="Name" />
-        <textarea name="body" placeholder="Comment"/>
+        <input type="text" name="author" placeholder="Name" required />
+        <textarea name="body" placeholder="Comment" required />
         <button>Add Comment</button>
       </form>
     )
