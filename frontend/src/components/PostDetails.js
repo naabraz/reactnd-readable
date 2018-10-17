@@ -5,9 +5,12 @@ import { Link, Redirect } from 'react-router-dom'
 import VoteScore from './VoteScore'
 
 import {
-  handlePostDetails,
   handleRemovePost,
 } from '../actions/posts'
+
+import {
+  handlePostDetails,
+} from '../actions/post'
 
 import CommentsList from './CommentsList'
 import AddComment from './AddComment'
@@ -36,7 +39,7 @@ class PostDetails extends Component {
   }
 
   render() {
-    const { post, loadingBar } = this.props
+    const { post, loadingBar , postExist} = this.props
     const { toHome } = this.state
 
     if (toHome) {
@@ -46,6 +49,8 @@ class PostDetails extends Component {
     return (
       <div>
         {loadingBar.default !== 0 ? null
+          :
+          !postExist ? <ContentNotFound />
           :
           <div>
             <h2>{post.title}</h2>
@@ -72,12 +77,11 @@ class PostDetails extends Component {
   }
 }
 
-function mapStateToProps ({ posts, loadingBar }) {
-  const [post] = posts
-
+function mapStateToProps ({ post, loadingBar }) {
   return {
     post,
     loadingBar,
+    postExist: post.id ? true : false
   }
 }
 

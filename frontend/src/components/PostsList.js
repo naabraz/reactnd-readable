@@ -8,6 +8,7 @@ import {
 
 import Post from './Post'
 import CategoriesList from './CategoriesList'
+import ContentNotFound from './ContentNotFound'
 
 class PostsList extends Component {
 
@@ -23,9 +24,7 @@ class PostsList extends Component {
     return (
       <div>
         {posts.length === 0 ?
-          <div>
-            <p>There is no posts to show :(</p>
-          </div> :
+          <ContentNotFound /> :
           <div className='posts-list'>
             <Link to={''} onClick={this.orderBy}>Order posts by score</Link>
             <ul>
