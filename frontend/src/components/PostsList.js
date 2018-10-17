@@ -35,7 +35,6 @@ class PostsList extends Component {
             </ul>
           </div>
         }
-        <Link to='/new'>New Post</Link>
         <CategoriesList />
       </div>
     )

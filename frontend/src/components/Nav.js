@@ -5,7 +5,8 @@ class Nav extends Component {
   render() {
     return (
       <nav className='nav'>
-        <NavLink exact to={'/'}>Home</NavLink>
+        <NavLink exact to='/'>Home</NavLink>
+        <NavLink exact to='/new'>Create Post</NavLink>
       </nav>
     )
   }

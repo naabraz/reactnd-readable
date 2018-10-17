@@ -3,7 +3,6 @@ import { showLoading, hideLoading } from 'react-redux-loading'
 import * as api from '../api/posts'
 
 export const RECEIVE_POSTS_BY_CATEGORY = 'RECEIVE_POSTS_BY_CATEGORY'
-export const ORDER_POSTS = 'ORDER_POSTS'
 export const GET_POST_DETAILS = 'GET_POST_DETAILS'
 export const ADD_POST = 'ADD_POST'
 export const UPDATE_POST = 'UPDATE_POST'
@@ -13,13 +12,6 @@ export const UPDATE_VOTE_SCORE = 'UPDATE_VOTE_SCORE'
 function receivePostsByCategory(posts) {
   return {
     type: RECEIVE_POSTS_BY_CATEGORY,
-    posts,
-  }
-}
-
-export function orderPosts(posts) {
-  return {
-    type: ORDER_POSTS,
     posts,
   }
 }
@@ -48,7 +40,7 @@ function addPost(post) {
 function updatePost(post) {
   return {
     type: UPDATE_POST,
-    post
+    post,
   }
 }
 

@@ -72,9 +72,11 @@ class PostDetails extends Component {
 }
 
 function mapStateToProps ({ posts, loadingBar }) {
+  const [post] = posts
+
   return {
-    post: posts[0],
-    loadingBar
+    post: post,
+    loadingBar,
   }
 }
 

@@ -16,6 +16,10 @@ a:hover {
   text-decoration: underline;
 }
 
+.nav a {
+  margin: 10px;
+}
+
 .container {
   max-width: 960px;
   margin: 0 auto;

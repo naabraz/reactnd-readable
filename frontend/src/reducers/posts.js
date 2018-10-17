@@ -4,7 +4,6 @@ import {
 
 import {
   RECEIVE_POSTS_BY_CATEGORY,
-  ORDER_POSTS,
   GET_POST_DETAILS,
   UPDATE_POST,
   REMOVE_POST,
@@ -15,8 +14,6 @@ export default function posts(state = [], action) {
   switch (action.type) {
     case RECEIVE_POSTS_BY_CATEGORY:
       return action.posts
-    case ORDER_POSTS:
-      return action.posts.sort((a, b) => a.timestamp + b.timestamp)
     case GET_POST_DETAILS:
       return [action.post]
     case UPDATE_POST:
