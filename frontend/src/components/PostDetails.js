@@ -11,6 +11,7 @@ import {
 
 import CommentsList from './CommentsList'
 import AddComment from './AddComment'
+import ContentNotFound from './ContentNotFound'
 
 class PostDetails extends Component {
 
@@ -75,7 +76,7 @@ function mapStateToProps ({ posts, loadingBar }) {
   const [post] = posts
 
   return {
-    post: post,
+    post,
     loadingBar,
   }
 }
