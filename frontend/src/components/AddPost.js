@@ -54,7 +54,7 @@ class AddPost extends Component {
               <option value={category.name} key={category.name}>{category.name}</option>
             ))}
           </select>
-          <textarea name="body" placeholder="Post"/>
+          <textarea name="body" placeholder="Post" required/>
           <button>Add Post</button>
        </form>
       </div>

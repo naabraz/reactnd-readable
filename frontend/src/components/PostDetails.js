@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import VoteScore from './VoteScore'
 
@@ -14,6 +14,10 @@ import AddComment from './AddComment'
 
 class PostDetails extends Component {
 
+  state = {
+    toHome: false,
+  }
+
   componentDidMount () {
     const { id } = this.props.match.params
 
@@ -24,10 +28,19 @@ class PostDetails extends Component {
     e.preventDefault()
 
     this.props.dispatch(handleRemovePost(post))
+
+    this.setState(() => ({
+      toHome: true
+    }))
   }
 
   render() {
     const { post, loadingBar } = this.props
+    const { toHome } = this.state
+
+    if (toHome) {
+      return <Redirect to={'/'} />
+    }
 
     return (
       <div>

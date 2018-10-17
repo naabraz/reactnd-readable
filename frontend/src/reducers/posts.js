@@ -24,7 +24,7 @@ export default function posts(state = [], action) {
         ...state,
       }
     case REMOVE_POST:
-      return action.post
+      return [action.post]
     case UPDATE_VOTE_SCORE:
       state.filter((post) => post.id === action.voteScore.id)
         .map((post) => post.voteScore = action.voteScore.option === 'upVote' ? post.voteScore + 1 : post.voteScore -1)

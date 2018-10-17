@@ -33,9 +33,9 @@ class PostsList extends Component {
                 <Post post={post} key={post.id} />
               ))}
             </ul>
-            <Link to='/new'>New Post</Link>
           </div>
         }
+        <Link to='/new'>New Post</Link>
         <CategoriesList />
       </div>
     )
