@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import {
   handleInitialData,
@@ -16,17 +15,21 @@ class PostsList extends Component {
     this.props.dispatch(handleInitialData())
   }
 
-  orderBy = () => this.props.posts.sort((a, b) => a.timestamp + b.timestamp)
+  state = {
+    order: false
+  }
 
   render() {
     const { posts } = this.props
+
+   if (this.state.order) posts.sort((a, b) => a.timestamp + b.timestamp)
 
     return (
       <div>
         {posts.length === 0 ?
           <ContentNotFound /> :
           <div className='posts-list'>
-            <Link to={''} onClick={this.orderBy}>Order posts by score</Link>
+            <a className='link-order' onClick={() => this.setState({order: true})}>Order posts by date</a>
             <ul>
               {posts.map((post) => (
                 <Post post={post} key={post.id} />

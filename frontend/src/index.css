@@ -16,6 +16,10 @@ a:hover {
   text-decoration: underline;
 }
 
+.link-order {
+  cursor: pointer
+}
+
 .nav a {
   margin: 10px;
 }
