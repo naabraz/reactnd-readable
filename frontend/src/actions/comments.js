@@ -16,7 +16,10 @@ function getPostComments(comments) {
 function addComment(comment) {
   return {
     type: ADD_POST_COMMENT,
-    comment,
+    comment: {
+      ...comment,
+      voteScore: 0
+    }
   }
 }
 
