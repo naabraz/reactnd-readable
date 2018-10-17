@@ -52,22 +52,18 @@ export function handlePostComments(id) {
 
 export function handleAddPostComment(comment) {
   return (dispatch) => {
-    dispatch(addComment(comment))
-
     api.addPostComment(comment)
-      .catch(() => {
-        dispatch(removeComment(comment))
+      .then(() => {
+        dispatch(addComment(comment))
       })
   }
 }
 
 export function handleRemovePostComment(comment) {
   return (dispatch) => {
-    dispatch(removeComment(comment))
-
     api.removePostComment(comment)
-      .catch(() => {
-        dispatch(addComment(comment))
+      .then(() => {
+        dispatch(removeComment(comment))
       })
   }
 }
