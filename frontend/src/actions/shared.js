@@ -22,6 +22,6 @@ export function handleInitialData () {
     ]).then(([posts, { categories }]) => {
       dispatch(receiveInitialData(posts, categories))
       dispatch(hideLoading())
-    })
+    }).catch(() => dispatch(hideLoading()))
   }
 }
