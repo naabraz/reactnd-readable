@@ -8,7 +8,7 @@ import { handleEditPostComment } from '../../actions/comments'
 class EditComment extends Component {
 
   state = {
-    toHome: false,
+    toPostDetails: false,
     ...this.props.location.state.comment
   }
 
@@ -24,7 +24,7 @@ class EditComment extends Component {
     this.props.dispatch(handleEditPostComment(commentUpdated))
 
     this.setState(() => ({
-      toHome: true
+      toPostDetails: true
     }))
   }
 
@@ -33,10 +33,10 @@ class EditComment extends Component {
   }
 
   render() {
-    const { body, toHome } = this.state
+    const { body, toPostDetails, parentId } = this.state
 
-    if (toHome) {
-      return <Redirect to={'/'} />
+    if (toPostDetails) {
+      return <Redirect to={`/post/${parentId}`} />
     }
 
     return (
