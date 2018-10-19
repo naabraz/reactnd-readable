@@ -9,6 +9,7 @@ export const fetchPostComments = (id) =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))
 
 export const addPostComment = (comment) =>
   fetch(`${url}/comments/`, {
@@ -18,6 +19,7 @@ export const addPostComment = (comment) =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))
 
 export const removePostComment = (id) =>
   fetch(`${url}/comments/${id}`, {
@@ -26,6 +28,7 @@ export const removePostComment = (id) =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))
 
 export const editPostComment = (comment) =>
   fetch(`${url}/comments/${comment.id}`, {
@@ -35,6 +38,7 @@ export const editPostComment = (comment) =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))
 
 export const updateCommentScore = (voteScore) =>
   fetch(`${url}/comments/${voteScore.id}`, {
@@ -44,3 +48,4 @@ export const updateCommentScore = (voteScore) =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))

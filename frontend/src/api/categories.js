@@ -9,3 +9,4 @@ export const fetchCategories = () =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))

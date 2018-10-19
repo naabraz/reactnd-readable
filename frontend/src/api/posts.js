@@ -9,6 +9,7 @@ export const fetchPosts = () =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))
 
 export const fetchPostDetails = (id) =>
   fetch(`${url}/posts/${id}`, {
@@ -16,6 +17,7 @@ export const fetchPostDetails = (id) =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))
 
 export const fetchCategoryPosts = (category) =>
   fetch(`${url}/${category}/posts`, {
@@ -23,6 +25,7 @@ export const fetchCategoryPosts = (category) =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))
 
 export const addPost = (post) =>
   fetch(`${url}/posts`, {
@@ -32,6 +35,7 @@ export const addPost = (post) =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))
 
 export const removePost = (id) =>
   fetch(`${url}/posts/${id}`, {
@@ -40,6 +44,7 @@ export const removePost = (id) =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))
 
 export const updatePost = (post) =>
   fetch(`${url}/posts/${post.id}`, {
@@ -49,6 +54,7 @@ export const updatePost = (post) =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))
 
 export const updatePostVoteScore = (voteScore) =>
   fetch(`${url}/posts/${voteScore.id}`, {
@@ -58,3 +64,4 @@ export const updatePostVoteScore = (voteScore) =>
   })
   .then(res => res.json())
   .then(data => data)
+  .catch((e) => new Error(e))
