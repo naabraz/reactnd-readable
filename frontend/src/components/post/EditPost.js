@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 
 import {
   handleUpdatePost,
-} from '../../actions/posts'
+} from '../../actions/post'
 
 class EditPost extends Component {
 
@@ -35,10 +35,10 @@ class EditPost extends Component {
   }
 
   render() {
-    const { title, body, toHome } = this.state
+    const { title, body, toHome, id } = this.state
 
     if (toHome) {
-      return <Redirect to={'/'} />
+      return <Redirect to={`/post/${id}`} />
     }
 
     return (

@@ -1,6 +1,7 @@
 import {
   GET_POST_DETAILS,
-} from '../actions/posts'
+  UPDATE_POST,
+} from '../actions/post'
 
 import {
   ADD_POST_COMMENT,
@@ -20,6 +21,10 @@ export default function posts(state = {}, action) {
       return {
         ...state,
         commentCount: state.commentCount - 1,
+      }
+    case UPDATE_POST:
+      return {
+        ...state,
       }
     default:
       return state
