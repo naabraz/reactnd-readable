@@ -8,11 +8,11 @@ import {
 
 import {
   handleUpdatePostVoteScore,
-} from '../actions/posts'
+} from '../../actions/posts'
 
 import {
   handleUpdateCommentScore,
-} from '../actions/comments'
+} from '../../actions/comments'
 
 class VoteScore extends Component {
   voteOptions = {

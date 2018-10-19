@@ -2,12 +2,12 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LoadingBar from 'react-redux-loading'
 
-import PostsList from './PostsList'
-import PostDetails from './PostDetails'
-import AddPost from './AddPost'
-import EditPost from './EditPost'
-import EditComment from './EditComment'
-import Nav from './Nav'
+import PostsList from './post/PostsList'
+import PostDetails from './post/PostDetails'
+import AddPost from './post/AddPost'
+import EditPost from './post/EditPost'
+import EditComment from './comment/EditComment'
+import Nav from './shared/Nav'
 
 class App extends Component {
 

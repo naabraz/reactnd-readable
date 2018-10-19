@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 
 import {
   handleInitialData,
-} from '../actions/shared'
+} from '../../actions/shared'
 
 import Post from './Post'
-import CategoriesList from './CategoriesList'
-import ContentNotFound from './ContentNotFound'
+import CategoriesList from '../shared/CategoriesList'
+import ContentNotFound from '../shared/ContentNotFound'
 
 class PostsList extends Component {
 

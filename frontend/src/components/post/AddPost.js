@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import serializeForm from 'form-serialize'
 import { Redirect } from 'react-router-dom'
 
-import { idGenerator } from '../helpers/idGenerator'
-import { handleAddPost } from '../actions/posts'
-import { handleFetchCategories } from '../actions/categories'
+import { idGenerator } from '../../helpers/idGenerator'
+import { handleAddPost } from '../../actions/posts'
+import { handleFetchCategories } from '../../actions/categories'
 
 class AddPost extends Component {
 

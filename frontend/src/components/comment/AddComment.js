@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import serializeForm from 'form-serialize'
 
-import { idGenerator } from '../helpers/idGenerator'
-import { handleAddPostComment } from '../actions/comments'
+import { idGenerator } from '../../helpers/idGenerator'
+import { handleAddPostComment } from '../../actions/comments'
 
 class AddComment extends Component {
 

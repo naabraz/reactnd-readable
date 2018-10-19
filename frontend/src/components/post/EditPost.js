@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 
 import {
   handleUpdatePost,
-} from '../actions/posts'
+} from '../../actions/posts'
 
 class EditPost extends Component {
 

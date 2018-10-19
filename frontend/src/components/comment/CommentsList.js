@@ -5,9 +5,9 @@ import { Link, withRouter } from 'react-router-dom'
 import { 
   handlePostComments, 
   handleRemovePostComment,
-} from '../actions/comments'
+} from '../../actions/comments'
 
-import VoteScore from './VoteScore'
+import VoteScore from '../shared/VoteScore'
 
 class CommentsList extends Component {
 

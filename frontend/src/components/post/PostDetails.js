@@ -2,19 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 
-import VoteScore from './VoteScore'
+import VoteScore from '../shared/VoteScore'
 
 import {
   handleRemovePost,
-} from '../actions/posts'
+} from '../../actions/posts'
 
 import {
   handlePostDetails,
-} from '../actions/post'
+} from '../../actions/post'
 
-import CommentsList from './CommentsList'
-import AddComment from './AddComment'
-import ContentNotFound from './ContentNotFound'
+import CommentsList from '../comment/CommentsList'
+import AddComment from '../comment/AddComment'
+import ContentNotFound from '../shared/ContentNotFound'
 
 class PostDetails extends Component {
 

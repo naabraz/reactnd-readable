@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import serializeForm from 'form-serialize'
 import { Redirect } from 'react-router-dom'
 
-import { handleEditPostComment } from '../actions/comments'
+import { handleEditPostComment } from '../../actions/comments'
 
 class EditComment extends Component {
 
