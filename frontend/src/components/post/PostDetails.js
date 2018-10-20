@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 
-import VoteScore from '../shared/VoteScore'
-
 import {
   handleRemovePost,
 } from '../../actions/posts'
@@ -12,9 +10,10 @@ import {
   handlePostDetails,
 } from '../../actions/post'
 
+import PostFooter from '../post/PostFooter'
 import CommentsList from '../comment/CommentsList'
 import AddComment from '../comment/AddComment'
-import ContentNotFound from '../shared/ContentNotFound'
+import NotFound from '../shared/NotFound'
 
 class PostDetails extends Component {
 
@@ -47,23 +46,19 @@ class PostDetails extends Component {
     }
 
     return (
-      <div>
+      <div className='post-details'>
         {loadingBar.default !== 0 ? null
           :
-          !postExist ? <ContentNotFound />
+          !postExist ? <NotFound type={'postDetails'}/>
           :
           <div>
             <h2>{post.title}</h2>
             <p>{post.body}</p>
-            <p>Author: {post.author}</p>
-            <p>Comments: {post.commentCount}</p>
-
-            <VoteScore initialRating={post.voteScore} data={post} type={'post'} />
-
-            <p>
-              <Link to={{ pathname: `/post/edit/${post.id}`, state: { post }}}>Edit</Link> |
-              <Link to='' onClick={(e) => this.removePost(e, post)}>Remove</Link>
-            </p>
+            
+            <PostFooter post={post} />
+            
+            <Link to={{ pathname: `/post/edit/${post.id}`, state: { post }}}>Edit</Link> |
+            <Link to='' onClick={(e) => this.removePost(e, post)}>Remove</Link>
 
             <hr />
 

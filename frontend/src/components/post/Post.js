@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import VoteScore from '../shared/VoteScore'
+import PostFooter from '../post/PostFooter'
 
 class Post extends Component {
   render() {
@@ -13,13 +13,7 @@ class Post extends Component {
         <h2>
           <Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
         </h2>
-        <p>Date: {new Date(post.timestamp).toDateString()}</p>
-        
-        <VoteScore initialRating={post.voteScore} data={post} type={'post'} />
-        
-        <p>
-          Author: {post.author} | Comments: {post.commentCount}
-        </p>
+        <PostFooter post={post} />
       </li>
    )
   }

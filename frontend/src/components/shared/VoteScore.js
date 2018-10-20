@@ -48,11 +48,11 @@ class VoteScore extends Component {
     const { initialRating } = this.state
 
     return (
-      <div>
+      <span>
         <TiThumbsUp className='vote-icon' onClick={() => this.updateVoteScore(this.voteOptions.upVote)} />
+        <span className='score-initial'>{ initialRating }</span>
         <TiThumbsDown className='vote-icon' onClick={() => this.updateVoteScore(this.voteOptions.downVote)} />
-        <p>Score: { initialRating } </p>
-      </div>
+      </span>
     )
   }
 }

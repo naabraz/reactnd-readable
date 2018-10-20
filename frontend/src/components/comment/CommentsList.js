@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
+import moment from 'moment'
 
 import { 
   handlePostComments, 
@@ -33,20 +34,19 @@ class CommentsList extends Component {
     const { comments } = this.props
 
     return (
-      <div className='comments'>
+      <div className='comments-list'>
         <h3>Comments</h3>
         <ul>
           {comments.map((comment) => (
             <li key={comment.id}>
-              <p>Author: {comment.author} | Date: {new Date(comment.timestamp).toDateString()}</p>
+              <p>Author: {comment.author} | {moment(comment.timestamp).format('M/D/YYYY')}</p>
               <p>{comment.body}</p>
               
               <VoteScore initialRating={comment.voteScore} data={comment} type={'comment'} />
               
-              <p>
-                <Link to={{ pathname: `/comment/edit/${comment.id}`, state: { comment }}}>Edit</Link> | 
-                <Link to='' onClick={(e) => this.removeComment(e, comment.id)}>Remove</Link>
-              </p>
+              <Link to={{ pathname: `/comment/edit/${comment.id}`, state: { comment }}}>Edit</Link> | 
+              <Link to='' onClick={(e) => this.removeComment(e, comment.id)}>Remove</Link>
+              <hr />
             </li>
           ))}
         </ul>

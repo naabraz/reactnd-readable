@@ -7,7 +7,7 @@ import {
 
 import Post from './Post'
 import CategoriesList from '../shared/CategoriesList'
-import ContentNotFound from '../shared/ContentNotFound'
+import NotFound from '../shared/NotFound'
 
 class PostsList extends Component {
 
@@ -27,7 +27,7 @@ class PostsList extends Component {
     return (
       <div>
         {posts.length === 0 ?
-          <ContentNotFound /> :
+          <NotFound type={'postsList'}/> :
           <div className='posts-list'>
             <a className='link-order' onClick={() => this.setState({order: true})}>Order posts by date</a>
             <ul>

@@ -45,7 +45,7 @@ class AddPost extends Component {
 
     return (
       <div>
-        <h2>New Post</h2>
+        <h2>Create Post</h2>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="title" placeholder="Title" required />
           <input type="text" name="author" placeholder="Author" required />

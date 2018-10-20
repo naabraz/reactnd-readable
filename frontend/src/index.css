@@ -16,8 +16,29 @@ a:hover {
   text-decoration: underline;
 }
 
-.link-order {
+.link-order, .vote-icon {
   cursor: pointer
+}
+
+.vote-icon:hover {
+  color: #EC176C;
+}
+
+.score-initial {
+  margin-top: 50px;
+}
+
+.post-footer {
+  display: inline;
+  padding: 10px;
+}
+
+.post-footer span {
+  margin: 10px;
+}
+
+.post-details .post-footer {
+  margin-left: -20px;
 }
 
 .nav a {
@@ -29,6 +50,7 @@ a:hover {
   margin: 0 auto;
   list-style: none;
   padding-left: 50px;
+  padding-bottom: 100px;
 }
 
 .container .vote-icon {
@@ -55,13 +77,34 @@ a:hover {
   width: 100%;
 }
 
+.container .posts-list li {
+  padding-bottom: 20px;
+}
+
 .container .nav {
   float: right;
   margin-right: 10%;
 }
 
-.comments ul {
+.container .comments-list ul {
+  margin: 0px;
+  padding: 0px;
   list-style: none;
+}
+
+.content-not-found {
+  font-size: 24px;
+}
+
+.content-not-found-icon {
+  font-size: 100px;
+  margin-left: 25%;
+  color: #EC176C;
+}
+
+hr {
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 input, textarea, select {
