@@ -12,7 +12,7 @@ import NotFound from '../shared/NotFound'
 class PostsList extends Component {
 
   componentDidMount () {
-    this.props.dispatch(handleInitialData())
+    this.props.fetchPosts()
   }
 
   state = {
@@ -21,17 +21,16 @@ class PostsList extends Component {
 
   render() {
     const { posts } = this.props
-
-   if (this.state.order) posts.sort((a, b) => a.timestamp + b.timestamp)
+    const sortedPosts = this.state.order ? posts.sort((a, b) => a.timestamp + b.timestamp) : posts
 
     return (
       <div>
-        {posts.length === 0 ?
+        {sortedPosts.length === 0 ?
           <NotFound type={'postsList'}/> :
           <div className='posts-list'>
             <a className='link-order' onClick={() => this.setState({order: true})}>Order posts by date</a>
             <ul>
-              {posts.map((post) => (
+              {sortedPosts.map((post) => (
                 <Post post={post} key={post.id} />
               ))}
             </ul>
@@ -51,4 +50,10 @@ function mapStateToProps({ posts }, { match }) {
   }
 }
 
-export default connect(mapStateToProps)(PostsList)
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchPosts: () => dispatch(handleInitialData())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostsList)
