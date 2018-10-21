@@ -21,14 +21,14 @@ class PostsList extends Component {
 
   render() {
     const { posts } = this.props
-    const sortedPosts = this.state.order ? posts.sort((a, b) => a.timestamp + b.timestamp) : posts
+    const sortedPosts = !this.state.order ? posts : [...posts].sort((a, b) => a.timestamp + b.timestamp)
 
     return (
       <div>
         {sortedPosts.length === 0 ?
           <NotFound type={'postsList'}/> :
           <div className='posts-list'>
-            <a className='link-order' onClick={() => this.setState({order: true})}>Order posts by date</a>
+            <a className='link-order' onClick={() => this.setState((state) => ({order: !state.order}))}>Order posts by date</a>
             <ul>
               {sortedPosts.map((post) => (
                 <Post post={post} key={post.id} />
