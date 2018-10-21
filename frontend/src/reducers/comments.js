@@ -14,9 +14,16 @@ export default function comments(state = [], action) {
     case REMOVE_POST_COMMENT:
       return state.filter((comment) => comment.id !== action.comment)
     case UPDATE_COMMENT_SCORE:
-      state.filter((comment) => comment.id === action.voteScore.id)
-        .map((comment) => comment.voteScore = action.voteScore.option === 'upVote' ? comment.voteScore + 1 : comment.voteScore -1)
-      return state
+      const updatedState = state.map(comment => {
+        if (comment.id === action.voteScore.id) {
+            return {
+                ...comment,
+                voteScore: action.voteScore.option === 'upVote' ? comment.voteScore + 1 : comment.voteScore -1
+            }
+        }
+        return comment
+      })
+      return updatedState
     default:
       return state
   }
