@@ -14,7 +14,7 @@ export default function comments(state = [], action) {
     case REMOVE_POST_COMMENT:
       return state.filter((comment) => comment.id !== action.comment)
     case UPDATE_COMMENT_SCORE:
-      const updatedState = state.map(comment => {
+      const updatedComment = state.map(comment => {
         if (comment.id === action.voteScore.id) {
             return {
                 ...comment,
@@ -23,7 +23,7 @@ export default function comments(state = [], action) {
         }
         return comment
       })
-      return updatedState
+      return updatedComment
     default:
       return state
   }

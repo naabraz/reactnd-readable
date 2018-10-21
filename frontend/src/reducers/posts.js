@@ -15,7 +15,7 @@ export default function posts(state = [], action) {
     case REMOVE_POST:
       return [action.post]
     case UPDATE_VOTE_SCORE:
-      const updatedState = state.map(post => {
+      const updatedPost = state.map(post => {
         if (post.id === action.voteScore.id) {
             return {
                 ...post,
@@ -24,7 +24,7 @@ export default function posts(state = [], action) {
         }
         return post
       })
-      return updatedState
+      return updatedPost
     case RECEIVE_DATA:
       return action.posts
     default:
